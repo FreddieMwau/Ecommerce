@@ -1,0 +1,8 @@
+input[type="text"]:focus~.input-text {
+    @apply text-cyan-500 bg-black transform -translate-y-4 -translate-x-2 scale-75;
+}
+
+.selected {
+    border-bottom: 3px solid cyan;
+    padding-bottom: 7px;
+}

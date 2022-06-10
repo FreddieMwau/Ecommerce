@@ -1,0 +1,106 @@
+<div class="checkout-container bg-gradient-to-r from-slate-200 to-slate-300">
+    <form class="w-8/12 bg-white rounded-lg shadow-md">
+        <div class="c-row">
+            <div class="c-col">
+                <h3 class="title">Check Out</h3>
+                <h5>Already have an account, Log in</h5>
+            
+                <div class="inputBox">
+                    <span>Email Address</span>
+                    <input type="email" placeholder="johndoe@gmail.com">
+                </div>
+                <div class="inputBox">
+                    <span>Password</span>
+                    <input type="password" placeholder="********">
+                </div>
+                <button>Login</button>
+        
+    
+                <h5>Don't have an account, Sign Up</h5>
+                <div class="inputBox">
+                    <span>Full Name</span>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="inputBox">
+                    <span>Email Address</span>
+                    <input type="email" placeholder="johndoe@gmail.com">
+                </div>
+                <div class="inputBox">
+                    <span>Password</span>
+                    <input type="password" placeholder="********">
+                </div>
+                <button>Register</button>
+    
+                <h3 class="title">Billing Address</h3>
+                <div class="inputBox">
+                    <span>Address</span>
+                    <input type="text" placeholder="room - street - locality">
+                </div>
+                <div class="inputBox">
+                    <span>City</span>
+                    <input type="text" placeholder="Nyeri">
+                </div>
+                <div class="c-flex">
+                    <div class="inputBox">
+                        <span>County</span>
+                        <input type="text" placeholder="Nyeri">
+                    </div>
+                    <div class="inputBox">
+                        <span>County Code</span>
+                        <input type="number" placeholder="019">
+                    </div>
+                </div>
+            </div>
+
+            <div class="c-col">
+                <h3 class="title">Payment Details</h3>
+            
+                <div class="inputBox">
+                    <span>Accepted forms of payment</span>
+                    <div class="payments-radio">
+                        <input type="radio" class="radio__input" value="Mpesa" id="mpesa" name="mpesa">
+                        <label for="mpesa" class="radio__label bg-slate-300">Mpesa</label>
+                        <input type="radio" class="radio__input" value="Debit/Credit" id="cards" name="cards">
+                        <label for="cards" class="radio__label bg-slate-300">Cards</label>
+                        <input type="radio" class="radio__input" value="Cash" id="cash" name="cash">
+                        <label for="cash" class="radio__label bg-slate-300">Cash</label>
+                    </div>
+                </div>
+                <div id="card-details">
+                    <div class="inputBox">
+                        <span>Name on card</span>
+                        <input type="text" placeholder="Mr. John Doe">
+                    </div>
+                    <div class="inputBox">
+                        <span>Card Number</span>
+                        <input type="number" placeholder="1111-2222-3333-4444">
+                    </div>
+                    <div class="inputBox">
+                        <span>exp. month</span>
+                        <input type="text" placeholder="June">
+                    </div>
+                    <div class="c-flex">
+                        <div class="inputBox">
+                            <span>exp. year</span>
+                            <input type="number" placeholder="2023">
+                        </div>
+                    
+                        <div class="inputBox">
+                            <span>CVV</span>
+                            <input type="number" placeholder="1234">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mpesa-details">
+                    <div class="inputBox">
+                        <span>mpesa number</span>
+                        <input type="number" placeholder="0712345678">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <button id="order">Place Order</button>
+    </form>
+</div> 

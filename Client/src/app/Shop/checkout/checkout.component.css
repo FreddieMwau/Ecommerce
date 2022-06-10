@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+.checkout-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    min-height: 100vh;
+    padding-bottom: 70px;
+}
+
+.checkout-container form{
+    padding: 20px;
+    border: 1px solid white;
+}
+
+.checkout-container form .c-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkout-container form .c-row .c-col{
+    flex: 1 1 250px;
+}
+
+.checkout-container form .c-row .c-col .title{
+    font-size: 20px;
+    color: #333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.payments-radio{
+    display: inline-flex;
+    overflow: hidden;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.radio__label{
+    padding: 10px;
+    font-size: 13px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    width: 7rem;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.radio__label:not(:last-of-type){
+    border-right: 1px solid gray;
+}
+
+.radio__input:checked + .radio__label{
+    background: cyan;
+    font-weight: 600;
+}
+
+.radio__input{
+    display: none;
+}
+
+.checkout-container form .c-row .c-col h5{
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 15px;
+
+}
+
+.checkout-container form .c-row .c-col .inputBox{
+    margin: 15px 0;
+}
+
+.checkout-container form .c-row .c-col .inputBox span{
+    margin-bottom: 5px;
+    display: block;
+    font-size: 13px;
+}
+
+.checkout-container form .c-row .c-col .inputBox input{
+    border: 1px solid #ccc;
+    width: 85%;
+    padding: 8px;
+    border-radius: 7px;
+    font-size: 14px;
+    text-transform: none;
+}
+
+.checkout-container form .c-row .c-col .inputBox input:focus{
+    border: 2px solid cyan;
+}
+
+.checkout-container form .c-row .c-col .c-flex{
+    display: flex;
+    gap: 15px;
+}
+
+.checkout-container form .c-row .c-col .c-flex .inputBox{
+    margin-top: 5px;
+}
+
+.checkout-container form button {
+    width: 75%;
+    background-color: dimgray;
+    padding: 8px 13px;
+    color: white;
+    margin: 0 30px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+}
+
+#order{
+    margin-left: 130px;
+    margin-top: 10px;
+}
+
+.checkout-container form button:hover{
+    background-color: cyan;
+    font-weight: 600;
+    color: dimgray;
+}
+
+@media (max-width:477px) {
+    .checkout-container form{
+        width: 19rem;
+    }
+    .radio__label {
+        padding: 4px;
+        text-align: center;
+        color: black;
+        width: 5rem;
+        transition: 0.1s;
+    }
+
+    #order {
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+
+    .checkout-container form button{
+        margin-left: 30px;
+    }
+}

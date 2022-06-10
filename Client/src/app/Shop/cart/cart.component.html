@@ -1,0 +1,107 @@
+<h4>Cart</h4>
+<section id="cart" class="py-4 px-5 mt-4">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>REMOVE</td>
+                <td>IMAGE</td>
+                <td>PRODUCT</td>
+                <td>PRICE</td>
+                <td>QUANTITY</td>
+                <td>SUB TOTAL</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                </td>
+                <td><img id="product" src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png" alt=""></td>
+                <td>Earbuds Explicit</td>
+                <td>Ksh 1000</td>
+                <td><input type="number" value="1"></td>
+                <td>Ksh 1000</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                </td>
+                <td><img id="product"
+                        src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/bose_tv_speaker/product_silo_images/BTVS_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png"
+                        alt=""></td>
+                <td>Sound Bar</td>
+                <td>Ksh 1000</td>
+                <td><input type="number" value="1"></td>
+                <td>Ksh 1000</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                </td>
+                <td><img id="product"
+                        src="https://www.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/noise_cancelling_headphones_700/product_silo_images/Silo_jpg/noise_cancelling_headphones_700_silver_EC_hero.psd/jcr:content/renditions/cq5dam.web.1000.1000.png"
+                        alt=""></td>
+                <td>Earbuds Explicit</td>
+                <td>Ksh 1000</td>
+                <td><input type="number" value="1"></td>
+                <td>Ksh 1000</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                </td>
+                <td><img id="product"
+                        src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/ls650_page/product_silo_images/lifestyle_650_black_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png"
+                        alt=""></td>
+                <td>Earbuds Explicit</td>
+                <td>Ksh 1000</td>
+                <td><input type="number" value="1"></td>
+                <td>Ksh 1000</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                </td>
+                <td><img id="product"
+                        src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc45/product_silo_images/QC45_PDP_Ecom-Gallery-B02.png/jcr:content/renditions/cq5dam.web.320.320.png"
+                        alt=""></td>
+                <td>Earbuds Explicit</td>
+                <td>Ksh 1000</td>
+                <td><input type="number" value="1"></td>
+                <td>Ksh 1000</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section id="cart-add" class="py-4 px-5 mt-4">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" id="couponInput" placeholder="Enter Coupon Code">
+            <button class="normal bg-cyan-500 py-2 px-7 rounded">Apply</button>
+        </div>
+    </div>
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>Ksh 5000</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>Ksh 5000</strong></td>
+            </tr>
+        </table>
+        <button (click)="checkOut()" class="bg-cyan-500 py-2 px-7 rounded">Proceed to checkout</button>
+    </div>
+</section>

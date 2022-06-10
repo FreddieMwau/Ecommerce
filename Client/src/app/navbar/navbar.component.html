@@ -1,0 +1,57 @@
+<nav class="bg-black p-3 shadow md:flex md:items-center md:justify-evenly">
+    <div class="flex justify-between items-center mx-2">
+        <img src="//static.bose.com/etc/designs/bose/consumer-products-2016/design/images/bose_mobile_logo.png" alt="Bose"
+            class="h-11 cursor-pointer inline">
+    
+        <span>
+            <img src="../../assets/menu.png" name="menu" class="h-6 cursor-pointer w-6 md:hidden block" alt=""
+                (click)="menu($event, navList, navIcons)">
+            <!-- <img src="../../assets/cross.png" name="cross" class="h-6 cursor-pointer w-6 md:hidden block" alt=""> -->
+        </span>
+    </div>
+
+    <div #navList>
+        <ul
+            class="md:flex md:items-center z-[-1] md:z-auto md:static w-full bg-black left-0 md:w-auto md:py-0 py-2 md:pl-0 pl-2 md:opacity-100 opacity-0 absolute top-[-400px] transition-all ease-in duration-300">
+            <li class="mx-4 my-6 md:my-0">
+                <a routerLink="/shop" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="selected"
+                    class="text-sm text-white hover:text-cyan-500 duration-500">HOME</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a routerLink="/shop/headphones" routerLinkActive="selected"
+                    class="text-sm text-white hover:text-cyan-500 duration-500">HEADPHONES</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a routerLink="/shop/earbuds" routerLinkActive="selected"
+                    class="text-sm text-white hover:text-cyan-500 duration-500">EARBUDS</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a routerLink="/shop/speakers" routerLinkActive="selected"
+                    class="text-sm text-white hover:text-cyan-500 duration-500">SPEAKERS</a>
+            </li>
+    
+            <div class="relative my-6 md:my-0">
+                <input type="text"
+                    class="h-8 w-40 text-white text-sm bg-black border-2 rounded-md border-white border-opacity-50 outline-none focus:border-cyan-500 focus:text-cyan-500 duration-300 px-2">
+                <span
+                    class="text-sm text-white text-opacity-80 absolute left-0 top-1.5 mx-1 px-2 transition duration-300 input-text">Search</span>
+            </div>
+
+            <li class="mx-4 my-6 md:my-0">
+                <a routerLink="/admin" routerLinkActive="selected"
+                    class="text-sm text-white hover:text-cyan-500 duration-500">ADMIN</a>
+            </li>
+    
+        </ul>
+    </div>
+    
+    <div #navIcons
+        class="md:flex md:items-center z-[-1] md:z-auto md:static w-full bg-black left-0 md:w-auto md:py-0 py-2 md:pl-0 pl-2 md:opacity-100 opacity-0 absolute top-[-400px] transition-all ease-in duration-300">
+        <img src="../../assets/shopping-cart.png" (click)="cart()" class="h-7 cursor-pointer inline mx-1" alt="">
+        <!-- <img src="../../assets/user.png" class="h-6 cursor-pointer inline mx-1" alt=""> -->
+        <li class="mx-4 my-6 md:my-0">
+            <a routerLink="/login" routerLinkActive="selected"
+                class="text-sm text-white hover:text-cyan-500 duration-500">LOG IN</a>
+        </li>
+    </div>
+</nav>
