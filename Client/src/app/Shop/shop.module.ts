@@ -8,6 +8,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HeadphonesComponent } from './headphones/headphones.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { EarbudsComponent } from './earbuds/earbuds.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { EarbudsComponent } from './earbuds/earbuds.component';
     ProductsComponent,
     ProductComponent,
     CartComponent,
+    NavbarComponent,
     CheckoutComponent,
     HeadphonesComponent,
     SpeakersComponent,

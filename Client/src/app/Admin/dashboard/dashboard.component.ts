@@ -12,4 +12,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggle(){
+    const menu = <HTMLDivElement> document.getElementById('menu')
+    menu.classList.add('active')
+  }
+
+  close(){
+    const menu = <HTMLDivElement>document.getElementById('menu')
+    menu.classList.remove('active')
+  }
+
 }
