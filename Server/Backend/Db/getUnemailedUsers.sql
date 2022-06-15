@@ -1,0 +1,4 @@
+CREATE OR ALTER PROCEDURE getUnemailedUsers
+AS BEGIN
+SELECT * FROM customers WHERE isEmailSent = 0
+END
