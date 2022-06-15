@@ -270,6 +270,10 @@ table tbody tr td.status{
     color: #2b2b2b;
 }
 
+.delivery{
+    color: black;
+}
+
 @media (max-width:769px) {
 
     #menu{
