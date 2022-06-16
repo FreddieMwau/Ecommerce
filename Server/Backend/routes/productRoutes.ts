@@ -5,9 +5,9 @@ const productRouter = express.Router()
 
 productRouter.post('/newproduct', newProduct)
 productRouter.get('/', getAllProducts)
-productRouter.get('/:product_category', getCategoryProducts)
+productRouter.get('/category/:product_category', getCategoryProducts)
 productRouter.get('/:product_id', getProduct)
-productRouter.get('/:product_id', deleteProduct)
-productRouter.get('/:product_id', updateProduct)
+productRouter.delete('/:product_id', deleteProduct)
+productRouter.patch('/:product_id', updateProduct)
 
 export default productRouter

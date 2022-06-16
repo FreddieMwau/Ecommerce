@@ -25,7 +25,7 @@ export const newOrders: RequestHandler = async (req, res) => {
             .execute('addOrder')
 
         res.status(200)
-            .json({message:'Order added successfully', order})
+            .json({message:'Order added successfully'})
 
     } catch (error: any) {
         res.json({ error: error.message })
@@ -44,7 +44,7 @@ export const getAllOrders: RequestHandler = async(req, res) => {
     }
 }
 
-export const getOrder: RequestHandler<{ order_id:string }> = async(req, res)=>{
+export const getOrder: RequestHandler<{order_id:string}> = async(req, res)=>{
     try{
         const order_id = req.params.order_id
         let dbPool = await mssql.connect(sqlConfig)

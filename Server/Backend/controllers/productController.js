@@ -38,7 +38,7 @@ const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             .input('product_category', mssql_1.default.VarChar, product_category)
             .execute('addProduct');
         res.status(200)
-            .json({ message: 'Product added successfully', product });
+            .json({ message: 'Product added successfully' });
     }
     catch (error) {
         res.json({ error: error.message });
@@ -140,7 +140,7 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             .input('product_category', mssql_1.default.VarChar, product_category)
             .execute('updateProduct');
         res.status(200)
-            .json({ message: 'Product added successfully', product });
+            .json({ message: 'Product added successfully' });
     }
     catch (error) {
         res.json({ error: error.message });

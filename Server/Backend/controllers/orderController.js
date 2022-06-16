@@ -36,7 +36,7 @@ const newOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .input('total_price', mssql_1.default.Int, total_price)
             .execute('addOrder');
         res.status(200)
-            .json({ message: 'Order added successfully', order });
+            .json({ message: 'Order added successfully' });
     }
     catch (error) {
         res.json({ error: error.message });

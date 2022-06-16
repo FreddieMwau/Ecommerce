@@ -8,7 +8,7 @@ import orderRouter from './routes/ordersRoutes'
 const app = express()
 app.use(express.json())
 app.use('/user', authRouter)
-app.use('/product', productRouter)
+app.use('/products', productRouter)
 app.use('/orders', orderRouter)
 
 app.listen(7000, () => {

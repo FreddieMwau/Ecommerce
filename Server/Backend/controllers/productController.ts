@@ -30,7 +30,7 @@ export const newProduct : RequestHandler = async (req, res) => {
             .execute('addProduct')
 
         res.status(200)
-            .json({message: 'Product added successfully', product})
+            .json({message: 'Product added successfully'})
     } catch (error: any) {
         res.json({ error: error.message })
     }
@@ -130,7 +130,7 @@ export const updateProduct: RequestHandler<{ product_id: string }> = async (req,
             .execute('updateProduct')
 
         res.status(200)
-            .json({ message: 'Product added successfully', product })
+            .json({ message: 'Product added successfully'})
 
     } catch (error: any) {
         res.json({ error: error.message })

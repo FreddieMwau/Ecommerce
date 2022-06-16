@@ -8,5 +8,5 @@ const orderController_1 = require("../controllers/orderController");
 const orderRouter = express_1.default.Router();
 orderRouter.post('/neworder', orderController_1.newOrders);
 orderRouter.get('/', orderController_1.getAllOrders);
-orderRouter.get('/:id', orderController_1.getOrder);
+orderRouter.get('/:order_id', orderController_1.getOrder);
 exports.default = orderRouter;

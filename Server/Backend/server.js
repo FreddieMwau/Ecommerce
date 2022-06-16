@@ -21,7 +21,7 @@ const ordersRoutes_1 = __importDefault(require("./routes/ordersRoutes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/user', authRoutes_1.default);
-app.use('/product', productRoutes_1.default);
+app.use('/products', productRoutes_1.default);
 app.use('/orders', ordersRoutes_1.default);
 app.listen(7000, () => {
     console.log("====> Server launched on port 7000");

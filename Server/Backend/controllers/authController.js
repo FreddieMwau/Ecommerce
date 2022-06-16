@@ -28,6 +28,7 @@ const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const signinValidator_1 = require("../helper/signinValidator");
 const signupValidator_1 = require("../helper/signupValidator");
@@ -35,7 +36,7 @@ dotenv_1.default.config();
 const signUp = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const customer_id = (0, uuid_1.v1)();
-        const { full_name, email, customer_password } = req.body;
+        const { full_name, customer_password, email } = req.body;
         const { error } = signupValidator_1.signUpSchema.validate(req.body);
         if (error) {
             return res.json({ error: error.details[0].message });
@@ -45,15 +46,12 @@ const signUp = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
         const user = yield dbPool.request()
             .input('customer_id', mssql_1.default.VarChar, customer_id)
             .input('full_name', mssql_1.default.VarChar, full_name)
-            .input('email', mssql_1.default.VarChar, email)
             .input('customer_password', mssql_1.default.VarChar, hashPwd)
+            .input('email', mssql_1.default.VarChar, email)
             .execute('createUser');
-        const data = user.recordset.map(record => {
-            const { customer_password } = record, rest = __rest(record, ["customer_password"]);
-            return rest;
-        });
+        const authToken = jsonwebtoken_1.default.sign(customer_id, process.env.SECRET_KEY);
         res.status(200)
-            .json({ message: 'New user created successfully', data });
+            .json({ message: 'New user created successfully', authToken });
     }
     catch (error) {
         res.json({ error: error.message });
@@ -102,6 +100,9 @@ const logIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield dbPool.request()
             .input('email', mssql_1.default.VarChar, email)
             .execute('getUserByUserName');
+        if (!user.recordset[0]) {
+            return res.json({ message: `user with email :: ${email} does not exist` });
+        }
         const validatePwd = yield bcrypt_1.default.compare(customer_password, user.recordset[0].customer_password);
         if (!validatePwd) {
             return res.json({ message: 'Invalid credentials, try again' });
@@ -110,7 +111,8 @@ const logIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             const { customer_password } = record, rest = __rest(record, ["customer_password"]);
             return rest;
         });
-        res.status(200).json({ message: 'Logged in successfully', data });
+        const authToken = jsonwebtoken_1.default.sign(email, process.env.SECRET_KEY);
+        res.status(200).json({ message: 'Logged in successfully', data, authToken });
     }
     catch (error) {
         res.json({ error: error.message });

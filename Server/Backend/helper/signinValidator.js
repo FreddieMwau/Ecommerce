@@ -7,5 +7,5 @@ exports.signInSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.signInSchema = joi_1.default.object({
     email: joi_1.default.string().required().email(),
-    customer_password: joi_1.default.string().required().min(5).max(10)
+    customer_password: joi_1.default.string().required().min(5).max(25)
 });
