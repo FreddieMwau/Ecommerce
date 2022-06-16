@@ -2,10 +2,14 @@ import express from 'express'
 import sqlConfig from './config/config'
 import mssql from 'mssql'
 import authRouter from './routes/authRoutes'
+import productRouter from './routes/productRoutes'
+import orderRouter from './routes/ordersRoutes'
 
 const app = express()
 app.use(express.json())
 app.use('/user', authRouter)
+app.use('/product', productRouter)
+app.use('/orders', orderRouter)
 
 app.listen(7000, () => {
     console.log("====> Server launched on port 7000");

@@ -3,8 +3,8 @@ CREATE TABLE orders
     order_id VARCHAR(255) NOT NULL PRIMARY KEY,
     product_id VARCHAR (255) NOT NULL,
     customer_id VARCHAR (255) NOT NULL,
-    quantity_ordered INT,
-    total_price INT,
+    quantity_ordered INT NOT NULL,
+    total_price INT NOT NULL,
     isOrderMailSent BIT DEFAULT 0,
     FOREIGN KEY(product_id)
     REFERENCES products(product_id)
