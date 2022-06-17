@@ -1,0 +1,285 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#interface {
+    width: 100%;
+    position: relative;
+}
+
+#interface .navigation {
+    width: calc(100% - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    background: white;
+    padding: 15px 30px;
+    border-bottom: 3px solid #ccc;
+}
+
+#interface .navigation .search {
+    padding: 10px 14px;
+    border: 1px solid #d7dbe6;
+    border-radius: 4px;
+}
+
+#interface .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#interface .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+
+#interface .navigation .profile img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#interface .navigation .profile h4 {
+    font-size: 16px;
+    color: #ccc;
+    margin: 0 10px;
+}
+
+#interface .navigation .n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#interface .navigation .n1 .menu-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    display: none;
+}
+
+#interface .navigation .n1 #id {
+    height: 30px;
+    width: 30px;
+}
+
+#interface .dash-title {
+    font-size: 24px;
+    color: dimgray;
+    margin-top: 95px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+#interface .cards {
+    padding: 10px 10px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#interface .cards .card {
+    background-color: white;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#interface .cards .card img {
+    width: 65px;
+    height: 65px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+#interface .cards .card h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#interface .cards .card img.user {
+    background-color: #7B74EC;
+}
+
+#interface .cards .card img.orders {
+    background-color: #5C8AF0;
+}
+
+#interface .cards .card img.sales {
+    background-color: #E45D99;
+}
+
+#interface .cards .card img.revenue {
+    background-color: #74DAEC;
+}
+
+#interface .cards .card span {
+    font-size: 13px;
+    color: #ccc;
+}
+
+#interface .board {
+    width: 95%;
+    margin: 30px 0 30px 30px;
+    overflow: auto;
+    background: white;
+    border-radius: 8px;
+}
+
+#interface .board img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+#interface .board h5 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#interface .board p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#interface .board a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#interface .board a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #5C8AF0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    border-bottom: 1px solid #eef0f3;
+}
+
+table thead td {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background-color: #F9FAFB;
+    text-align: start;
+    padding: 15px;
+}
+
+table tbody tr td {
+    padding: 10px 15px;
+}
+
+table tbody tr td.status {
+    background-color: #d7fada;
+    padding: 2px 10px;
+    margin-top: 25px;
+    display: inline-block;
+    border-radius: 40px;
+}
+
+p.delivery {
+    color: black;
+}
+
+@media (max-width:769px) {
+
+    #interface .navigation {
+        width: 100%;
+    }
+
+    #interface .navigation .n1 .menu-icon {
+        display: block;
+    }
+
+    #interface .cards {
+        justify-content: center;
+    }
+
+    #interface .cards .card {
+        margin: 10px 20px 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #interface .cards .card .values {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 5px;
+    }
+
+    #interface .board {
+        width: 92%;
+        padding: 0;
+        overflow-x: auto;
+    }
+
+    #interface .board table {
+        width: 100%;
+        background-color: #d7dbe6;
+        border-collapse: collapse;
+    }
+}
+
+@media (max-width:477px) {
+
+    #interface .navigation {
+        padding: 15px 10px;
+    }
+
+    #interface .navigation .search input {
+        width: 150px;
+    }
+
+    #interface .navigation .profile {
+        margin-left: 20px;
+    }
+    
+    #interface .cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #interface .cards .card {
+        justify-content: flex-start;
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    #interface .cards .card .values {
+        justify-content: flex-start;
+    }
+
+    #interface h3.dash-title {
+        padding: 0;
+    }
+
+    #interface .board {
+        margin: 30px 15px;
+    }
+}
