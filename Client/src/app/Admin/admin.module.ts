@@ -4,12 +4,20 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularLineawesomeModule } from 'angular-line-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { DashDataComponent } from './dash-data/dash-data.component';
+import { EditOrderComponent } from './edit-order/edit-order.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    AddProductComponent,
+    WelcomeComponent,
+    DashDataComponent,
+    EditOrderComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +26,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule.forChild([
       {path:'', component: DashboardComponent, children:[
-
+        {path:'', component: WelcomeComponent},
+        {path:'home', component: DashDataComponent},
+        { path: 'addproduct', component: AddProductComponent },
+        { path: 'editorder', component: EditOrderComponent }
       ]}
     ])
   ]
