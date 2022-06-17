@@ -6,18 +6,35 @@
                 <img class="frontImg" src="../../../assets/headphones.png" alt="">
             </div>
         </div>
-        <form>
+        <form [formGroup]="customerCredentials">
             <div class="form-content">
                 <div class="login-form">
                     <div class="title">Log In</div>
                     <div class="input-boxes">
-                        <div class="input-box">
-                            <img src="../../../assets/email.png" alt="">
-                            <input type="email" placeholder="Enter email address" required>
+                        <div class="input">
+                            <div class="input-box">
+                                <img src="../../../assets/email.png" alt="">
+                                <input type="email" formControlName="customerSignInEmail" placeholder="Enter email address" required>
+                            </div>
+                            <span class="error" *ngIf="customerCredentials.get('customerSignInEmail')?.errors?.['required'] && customerCredentials.get('customerSignInEmail')?.touched">Please enter your email address</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignInEmail')?.errors?.['email'] && customerCredentials.get('customerSignInEmail')?.touched">Please
+                                enter a valid email address</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignInEmail')?.errors?.['pattern'] && customerCredentials.get('customerSignInEmail')?.touched">Please
+                                enter a valid gmail email address</span>
                         </div>
-                        <div class="input-box">
-                            <img src="../../../assets/password.png" alt="">
-                            <input type="password" placeholder="Enter password" required>
+                        <div class="input">
+                            <div class="input-box">
+                                <img src="../../../assets/password.png" alt="">
+                                <input type="password" formControlName="customerSignInPassword"placeholder="Enter password" required>
+                            </div>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignInPassword')?.errors?.['required'] && customerCredentials.get('customerSignInPassword')?.touched">Please
+                                enter your password</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignInPassword')!.errors?.['minLength'] && customerCredentials.get('customerSignInPassword')!.touched">*
+                                Minimal 3 letters</span>
                         </div>
                         <div class="text"><a href="#">Forgot Password?</a></div>
                         <div class="input-box">
@@ -29,17 +46,41 @@
                 <div class="signup-form">
                     <div class="title">Sign Up</div>
                     <div class="input-boxes">
-                        <div class="input-box">
-                            <img src="../../../assets/profile.png" alt="">
-                            <input type="text" placeholder="Enter full names" required>
+                        <div class="input">
+                            <div class="input-box">
+                                <img src="../../../assets/profile.png" alt="">
+                                <input type="text" formControlName="customerNames" placeholder="Enter full names" required>
+                            </div>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerNames')?.errors?.['required'] && customerCredentials.get('customerNames')?.touched">Please
+                                enter your full names</span>
                         </div>
-                        <div class="input-box">
-                            <img src="../../../assets/email.png" alt="">
-                            <input type="email" placeholder="Enter email address" required>
+                        <div class="input">
+                            <div class="input-box">
+                                <img src="../../../assets/email.png" alt="">
+                                <input type="email" formControlName="customerSignUpEmail" placeholder="Enter email address" required>
+                            </div>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignUpEmail')?.errors?.['required'] && customerCredentials.get('customerSignUpEmail')?.touched">Please
+                                enter your email address</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignUpEmail')?.errors?.['email'] && customerCredentials.get('customerSignUpEmail')?.touched">Please
+                                enter a valid email address</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignUpEmail')?.errors?.['pattern'] && customerCredentials.get('customerSignUpEmail')?.touched">Please
+                                enter a valid gmail email address</span>
                         </div>
-                        <div class="input-box">
-                            <img src="../../../assets/password.png" alt="">
-                            <input type="password" placeholder="Enter password" required>
+                        <div class="input">
+                            <div class="input-box">
+                                <img src="../../../assets/password.png" alt="">
+                                <input type="password" formControlName="customerSignUpPassword" placeholder="Enter password" required>
+                            </div>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignUpPassword')?.errors?.['required'] && customerCredentials.get('customerSignUpPassword')?.touched">Please
+                                enter your password</span>
+                            <span class="error"
+                                *ngIf="customerCredentials.get('customerSignUpPassword')!.errors?.['minLength'] && customerCredentials.get('customerSignUpPassword')!.touched">*
+                                Minimal 3 letters</span>
                         </div>
                         <div class="input-box">
                             <button>Submit</button>

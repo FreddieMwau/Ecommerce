@@ -9,6 +9,7 @@ import { HeadphonesComponent } from './headphones/headphones.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { EarbudsComponent } from './earbuds/earbuds.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {path:'', children:[
         {path:'', component:ProductsComponent},
