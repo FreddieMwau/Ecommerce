@@ -1,27 +1,48 @@
 <app-navbar></app-navbar>
 <div class="checkout-container bg-gradient-to-r from-slate-200 to-slate-300">
-    <form class="w-8/12 bg-white rounded-lg shadow-md">
+    <form [formGroup]="paymentDeliveryDetails" (ngSubmit)="checkOut()" class="w-8/12 bg-white rounded-lg shadow-md">
         <div class="c-row">
             <div class="c-col">
                 <h3 class="title">Check Out</h3>
-    
+     
                 <h3 class="title">Billing Address</h3>
                 <div class="inputBox">
                     <span>Address</span>
-                    <input type="text" placeholder="room - street - locality">
+                    <input type="text" formControlName="customerAddress"  placeholder="room - street - locality">
+                    <span class="error"
+                        *ngIf="paymentDeliveryDetails.get('customerAddress')!.errors?.['required'] && paymentDeliveryDetails.get('customerAddress')?.touched">Address is required.</span>
+                    <span class="error"
+                        *ngIf="paymentDeliveryDetails.get('customerAddress')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerAddress')!.touched">*
+                        Minimal 3 letters</span>
                 </div>
                 <div class="inputBox">
                     <span>City</span>
-                    <input type="text" placeholder="Nyeri">
+                    <input type="text" formControlName="customerCity" placeholder="Nyeri">
+                    <span class="error"
+                        *ngIf="paymentDeliveryDetails.get('customerCity')?.errors?.['required'] && paymentDeliveryDetails.get('customerCity')?.touched">City name
+                        is required.</span>
+                    <span class="error"
+                        *ngIf="paymentDeliveryDetails.get('customerCity')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCity')!.touched">*
+                        Minimal 3 letters</span>
                 </div>
                 <div class="c-flex">
                     <div class="inputBox">
                         <span>County</span>
-                        <input type="text" placeholder="Nyeri">
+                        <input type="text" formControlName="customerCounty" placeholder="Nyeri">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCounty')?.errors?.['required'] && paymentDeliveryDetails.get('customerCounty')?.touched">County name is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCounty')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCounty')!.touched">*
+                            Minimal 3 letters</span>
                     </div>
                     <div class="inputBox">
                         <span>County Code</span>
-                        <input type="number" placeholder="019">
+                        <input type="number" formControlName="customerCountyCode" placeholder="019">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCountyCode')?.errors?.['required'] && paymentDeliveryDetails.get('customerCountyCode')?.touched">County code is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCountyCode')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCountyCode')!.touched">*
+                            Minimal 3 digits</span>
                     </div>
                 </div>
             </div>
@@ -43,25 +64,69 @@
                 <div id="card-details">
                     <div class="inputBox">
                         <span>Name on card</span>
-                        <input type="text" placeholder="Mr. John Doe">
+                        <input type="text" formControlName="customerCardName" placeholder="Mr. John Doe">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardName')?.errors?.['required'] && paymentDeliveryDetails.get('customerCardName')?.touched">Card holder name is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardName')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCardName')!.touched">*
+                            Minimal 3 letters</span>
                     </div>
                     <div class="inputBox">
                         <span>Card Number</span>
-                        <input type="number" placeholder="1111-2222-3333-4444">
+                        <input type="number" formControlName="customerCardNo" placeholder="1111-2222-3333-4444">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardNo')?.errors?.['required'] && paymentDeliveryDetails.get('customerCardNo')?.touched">Card number is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardNo')!.errors?.['maxLength'] && paymentDeliveryDetails.get('customerCardNo')!.touched">*
+                            Maximum 14 digits</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardNo')!.errors?.['pattern'] && paymentDeliveryDetails.get('customerCardNo')!.touched">*
+                            Use a valid card number format</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardNo')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCardNo')!.touched">*
+                            Minimal 10 digits</span>
                     </div>
                     <div class="inputBox">
                         <span>exp. month</span>
-                        <input type="text" placeholder="June">
+                        <input type="text" formControlName="customerCardExpMonth" placeholder="June">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardExpMonth')?.errors?.['required'] && paymentDeliveryDetails.get('customerCardExpMonth')?.touched">Card expiration month is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerCardExpMonth')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCardExpMonth')!.touched">*
+                            Minimal 3 letters</span>
                     </div>
                     <div class="c-flex">
                         <div class="inputBox">
                             <span>exp. year</span>
-                            <input type="number" placeholder="2023">
+                            <input type="number" formControlName="customerCardExpYear" placeholder="2023">
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardExpYear')?.errors?.['required'] && paymentDeliveryDetails.get('customerCardExpYear')?.touched">Card expiration year is required.</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardExpYear')!.errors?.['maxLength'] && paymentDeliveryDetails.get('customerCardExpYear')!.touched">*
+                                Maximum 4 digits</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardExpYear')!.errors?.['pattern'] && paymentDeliveryDetails.get('customerCardExpYear')!.touched">*
+                                Use year (2020) format</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardExpYear')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCardExpYear')!.touched">*
+                                Minimal 4 digits</span>
                         </div>
                     
                         <div class="inputBox">
                             <span>CVV</span>
-                            <input type="number" placeholder="1234">
+                            <input type="number" formControlName="customerCardCvv" placeholder="1234">
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardCvv')?.errors?.['required'] && paymentDeliveryDetails.get('customerCardCvv')?.touched">Card
+                                CVV No. is required.</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardCvv')!.errors?.['maxLength'] && paymentDeliveryDetails.get('customerCardCvv')!.touched">*
+                                Maximum 4 digits</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardCvv')!.errors?.['pattern'] && paymentDeliveryDetails.get('customerCardCvv')!.touched">*
+                                Use digits/numbers only</span>
+                            <span class="error"
+                                *ngIf="paymentDeliveryDetails.get('customerCardCvv')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerCardCvv')!.touched">*
+                                Minimal 4 digits</span>
                         </div>
                     </div>
                 </div>
@@ -69,12 +134,23 @@
                 <div class="mpesa-details">
                     <div class="inputBox">
                         <span>mpesa number</span>
-                        <input type="number" placeholder="0712345678">
+                        <input type="number" formControlName="customerMpesaNo" placeholder="0712345678">
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerMpesaNo')?.errors?.['required'] && paymentDeliveryDetails.get('customerMpesaNo')?.touched">Registered Mpesa Number is required.</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerMpesaNo')!.errors?.['maxLength'] && paymentDeliveryDetails.get('customerMpesaNo')!.touched">*
+                            Maximum 10 digits</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerMpesaNo')!.errors?.['pattern'] && paymentDeliveryDetails.get('customerMpesaNo')!.touched">*
+                            Use phone number format 0712345678</span>
+                        <span class="error"
+                            *ngIf="paymentDeliveryDetails.get('customerMpesaNo')!.errors?.['minLength'] && paymentDeliveryDetails.get('customerMpesaNo')!.touched">*
+                            Minimal 10 digits</span>
                     </div>
                 </div>
                 
             </div>
         </div>
-        <button id="order">Place Order</button>
+        <button id="order" type="submit">Place Order</button>
     </form>
 </div> 

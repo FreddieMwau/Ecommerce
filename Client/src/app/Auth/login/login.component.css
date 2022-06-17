@@ -211,6 +211,20 @@ form .form-content .login-text{
     display: none;
 }
 
+.error {
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+    margin-left: 80px;
+}
+input.ng-invalid.ng-touched {
+    border-bottom: 2px solid red;
+}
+
+input.ng-valid.ng-touched {
+    border-bottom: 2px solid green;
+}
+
 @media (max-width:730px) {
     .log-container .cover{
         display: none;

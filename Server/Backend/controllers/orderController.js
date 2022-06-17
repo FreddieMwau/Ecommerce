@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOrder = exports.getAllOrders = exports.newOrders = void 0;
+exports.updateOrder = exports.deleteOrder = exports.getOrderByUserId = exports.getOrder = exports.getAllOrders = exports.newOrders = void 0;
 const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
@@ -74,3 +74,72 @@ const getOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getOrder = getOrder;
+const getOrderByUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const customer_id = req.params.customer_id;
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const userOrder = yield dbPool.request()
+            .input('customer_id', mssql_1.default.VarChar, customer_id)
+            .execute('getOrderByUserId');
+        if (!userOrder.recordset[0]) {
+            return res.json({ message: `This customer id :: ${customer_id} does not have any orders` });
+        }
+        res.status(200)
+            .json(userOrder.recordset);
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.getOrderByUserId = getOrderByUserId;
+const deleteOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const order_id = req.params.order_id;
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const order = yield dbPool.request()
+            .input('order_id', mssql_1.default.VarChar, order_id)
+            .execute('getOrderById');
+        if (!order) {
+            return res.json({ message: `Order with id:: ${order_id} does not exist` });
+        }
+        yield dbPool.request()
+            .input('order_id', mssql_1.default.VarChar, order_id)
+            .execute('deleteOrder');
+        res.status(200)
+            .json({ message: `Order with id:: ${order_id} has been deleted successfully` });
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.deleteOrder = deleteOrder;
+const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const order_id = req.params.order_id;
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const { product_id, customer_id, quantity_ordered, total_price } = req.body;
+        const { error } = ordersValidator_1.ordersSchema.validate(req.body);
+        if (error) {
+            return res.json({ error: error.details[0].message });
+        }
+        const order = yield dbPool.request()
+            .input('order_id', mssql_1.default.VarChar, order_id)
+            .execute('getOrderById');
+        if (!order) {
+            return res.json({ message: `Order with id:: ${order_id} does not exist` });
+        }
+        const updateOrder = yield dbPool.request()
+            .input('order_id', mssql_1.default.VarChar, order_id)
+            .input('product_id', mssql_1.default.VarChar, product_id)
+            .input('customer_id', mssql_1.default.VarChar, customer_id)
+            .input('quantity_ordered', mssql_1.default.Int, quantity_ordered)
+            .input('total_price', mssql_1.default.Int, total_price)
+            .execute('updateOrder');
+        res.status(200)
+            .json({ message: `Order :: ${order_id} has been updated successfully` });
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.updateOrder = updateOrder;
