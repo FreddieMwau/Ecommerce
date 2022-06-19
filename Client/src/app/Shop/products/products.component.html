@@ -9,196 +9,30 @@
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
 
             <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3" *ngFor="let product of products">
 
                 <!-- Article -->
                 <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
 
-                    <a href="#">
+                    <a>
                         <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/ls650_page/product_silo_images/lifestyle_650_black_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png">
+                            src="{{product.product_image_url}}">
                     </a>
 
                     <header class="items-center leading-tight p-2 md:p-4">
                         <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
+                            <a class="no-underline hover:underline text-black">
+                                {{product.product_name}}
                             </a>
                         </h1>
                         <p class="text-grey-darker my-2 text-sm">
-                            Headphones
+                            {{product.product_category}}
                         </p>
                     </header>
 
                     <footer class=" p-2 md:p-4">
                         <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
-                        </p>
-                    </footer>
-
-                </article>
-                <!-- END Article -->
-
-            </div>
-            <!-- END Column -->
-
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://assets.bose.com/content/dam/Bose_DAM/Web/pro/global/products/headphones/noise_cancelling_headphones_700_conferencing/product_silo_images/NC700UC_Top_Down1_Black_with_Teams_Logo_1200x1022.psd/jcr:content/renditions/cq5dam.web.320.320.png">
-                    </a>
-
-                    <header class="items-center leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker my-2 text-sm">
-                            Headphones
-                        </p>
-                    </header>
-
-                    <footer class=" p-2 md:p-4">
-                        <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
-                        </p>
-                    </footer>
-
-                </article>
-                <!-- END Article/ -->
-
-            </div>
-            <!-- END Column -->
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/bose_tv_speaker/product_silo_images/BTVS_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png">
-                    </a>
-
-                    <header class="items-center leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker my-2 text-sm">
-                            Headphones
-                        </p>
-                    </header>
-
-                    <footer class=" p-2 md:p-4">
-                        <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
-                        </p>
-                    </footer>
-
-                </article>
-                <!-- END Article -->
-
-            </div>
-            <!-- END Column -->
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://www.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/noise_cancelling_headphones_700/product_silo_images/Silo_jpg/noise_cancelling_headphones_700_silver_EC_hero.psd/jcr:content/renditions/cq5dam.web.1000.1000.png">
-                    </a>
-
-                    <header class="items-center leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker my-2 text-sm">
-                            Headphones
-                        </p>
-                    </header>
-
-                    <footer class=" p-2 md:p-4">
-                        <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
-                        </p>
-                    </footer>
-
-                </article>
-                <!-- END Article -->
-
-            </div>
-            <!-- END Column -->
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/headphones/ssw/product_silo_images/ssw_black_EC_01.psd/jcr:content/renditions/cq5dam.web.320.320.png">
-                    </a>
-
-                    <header class="items-center leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker my-2 text-sm">
-                            Headphones
-                        </p>
-                    </header>
-
-                    <footer class=" p-2 md:p-4">
-                        <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
-                        </p>
-                    </footer>
-
-                </article>
-                <!-- END Article -->
-
-            </div>
-            <!-- END Column -->
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="border hover:border-cyan-500 overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                            src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/headphones/noise_masking_sleepbuds_ii/product_silo_images/SBII_PP_Ecom_Silo-1_1200x1022_web.png/jcr:content/renditions/cq5dam.web.320.320.png">
-                    </a>
-
-                    <header class="items-center leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="#">
-                                Bose QuietComfort headphones
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker my-2 text-sm">
-                            Headphones
-                        </p>
-                    </header>
-
-                    <footer class=" p-2 md:p-4">
-                        <p class="text-amber-400 pr-5 text-right">
-                            Ksh 1000
+                            {{product.product_price}}
                         </p>
                     </footer>
 
@@ -236,3 +70,4 @@
     </div>
 
 </div>
+<app-footer></app-footer>

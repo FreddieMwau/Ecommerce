@@ -8,6 +8,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DashDataComponent } from './dash-data/dash-data.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -17,7 +18,8 @@ import { EditOrderComponent } from './edit-order/edit-order.component';
     AddProductComponent,
     WelcomeComponent,
     DashDataComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { EditOrderComponent } from './edit-order/edit-order.component';
         {path:'', component: WelcomeComponent},
         {path:'home', component: DashDataComponent},
         { path: 'addproduct', component: AddProductComponent },
-        { path: 'editorder', component: EditOrderComponent }
+        { path: 'editorder', component: EditOrderComponent },
+        { path: 'editproduct', component: EditProductComponent }
       ]}
     ])
   ]

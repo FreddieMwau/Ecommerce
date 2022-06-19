@@ -49,9 +49,9 @@ const signUp = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
             .input('customer_password', mssql_1.default.VarChar, hashPwd)
             .input('email', mssql_1.default.VarChar, email)
             .execute('createUser');
-        const authToken = jsonwebtoken_1.default.sign(customer_id, process.env.SECRET_KEY);
+        const token = jsonwebtoken_1.default.sign(customer_id, process.env.SECRET_KEY);
         res.status(200)
-            .json({ message: 'New user created successfully', authToken });
+            .json({ message: 'New user created successfully', token });
     }
     catch (error) {
         res.json({ error: error.message });
@@ -111,8 +111,8 @@ const logIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             const { customer_password } = record, rest = __rest(record, ["customer_password"]);
             return rest;
         });
-        const authToken = jsonwebtoken_1.default.sign(email, process.env.SECRET_KEY);
-        res.status(200).json({ message: 'Logged in successfully', data, authToken });
+        const token = jsonwebtoken_1.default.sign(email, process.env.SECRET_KEY);
+        res.status(200).json({ message: 'Logged in successfully', data, token });
     }
     catch (error) {
         res.json({ error: error.message });

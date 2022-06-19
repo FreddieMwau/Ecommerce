@@ -25,9 +25,9 @@ export const signUp = async (req: Request, res: Response, next:NextFunction) => 
             .input('customer_password', mssql.VarChar, hashPwd)
             .input('email', mssql.VarChar, email)
             .execute('createUser')
-        const authToken = jwt.sign(customer_id, process.env.SECRET_KEY as string)
+        const token = jwt.sign(customer_id, process.env.SECRET_KEY as string)
         res.status(200)
-            .json({ message: 'New user created successfully',  authToken })
+            .json({ message: 'New user created successfully', token })
     } catch(error:any){
         res.json({error: error.message})
     }
@@ -86,8 +86,8 @@ export const logIn: RequestHandler = async (req, res) => {
             const { customer_password, ...rest } = record
             return rest
         })
-        const authToken = jwt.sign(email, process.env.SECRET_KEY as string)
-        res.status(200).json({ message: 'Logged in successfully', data, authToken })
+        const token = jwt.sign(email, process.env.SECRET_KEY as string)
+        res.status(200).json({ message: 'Logged in successfully', data, token })
     } catch (error: any) {
         res.json({ error: error.message })
     }

@@ -78,6 +78,13 @@ button:hover {
     font-weight: 600;
 }
 
+.error {
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+    margin-left: 80px;
+}
+
 @media (max-width:730px) {
     .form-content{
         width: 100%;

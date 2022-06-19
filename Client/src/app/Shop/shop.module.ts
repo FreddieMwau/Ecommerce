@@ -8,8 +8,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HeadphonesComponent } from './headphones/headphones.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { EarbudsComponent } from './earbuds/earbuds.component';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from '../Shared/footer/footer.component';
+import { NavbarComponent } from '../Shared/navbar/navbar.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     CheckoutComponent,
     HeadphonesComponent,
+    FooterComponent,
     SpeakersComponent,
     EarbudsComponent
   ],

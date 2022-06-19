@@ -11,9 +11,10 @@ export const newProduct : RequestHandler = async (req, res) => {
     try {
 
         const product_id = uid()
-        const { product_name, product_image_url, product_description, product_price, product_in_stock, product_category } = req.body as { product_name: string, product_image_url: string, product_description: string, product_price: number, product_in_stock: number, product_category: string, }
+        // const { product_name, product_image_url, product_description, product_price, product_in_stock, product_category } = req.body as { product_name: string, product_image_url: string, product_description: string, product_price: number, product_in_stock: number, product_category: string, }
+        const {users, ...products} = req.body
 
-        const {error} = productsSchema.validate(req.body)
+        const { error } = productsSchema.validate(products)
         if(error){
             return res.json({error: error.details[0].message})
         }
@@ -21,12 +22,12 @@ export const newProduct : RequestHandler = async (req, res) => {
         let dbPool = await mssql.connect(sqlConfig)
         const product = await dbPool.request()
             .input('product_id', mssql.VarChar, product_id)
-            .input('product_name', mssql.VarChar, product_name)
-            .input('product_image_url', mssql.VarChar, product_image_url)
-            .input('product_description', mssql.VarChar, product_description)
-            .input('product_price', mssql.Int, product_price)
-            .input('product_in_stock', mssql.Int, product_in_stock)
-            .input('product_category', mssql.VarChar, product_category)
+            .input('product_name', mssql.VarChar, products.product_name)
+            .input('product_image_url', mssql.VarChar, products.product_image_url)
+            .input('product_description', mssql.VarChar, products.product_description)
+            .input('product_price', mssql.Int, products.product_price)
+            .input('product_in_stock', mssql.Int, products.product_in_stock)
+            .input('product_category', mssql.VarChar, products.product_category)
             .execute('addProduct')
 
         res.status(200)
@@ -107,9 +108,10 @@ export const updateProduct: RequestHandler<{ product_id: string }> = async (req,
     try{
         const product_id = req.params.product_id
         let dbPool = await mssql.connect(sqlConfig)
-        const { product_name, product_image_url, product_description, product_price, product_in_stock, product_category } = req.body as { product_name: string, product_image_url: string, product_description: string, product_price: number, product_in_stock: number, product_category: string, }
+        // const { product_name, product_image_url, product_description, product_price, product_in_stock, product_category } = req.body as { product_name: string, product_image_url: string, product_description: string, product_price: number, product_in_stock: number, product_category: string, }
+        const { users, ...products } = req.body
 
-        const { error } = productsSchema.validate(req.body)
+        const { error } = productsSchema.validate(products)
         if (error) {
             return res.json({ error: error.details[0].message })
         }
@@ -121,12 +123,12 @@ export const updateProduct: RequestHandler<{ product_id: string }> = async (req,
         }
         const updatedProduct = await dbPool.request()
             .input('product_id', mssql.VarChar, product_id)
-            .input('product_name', mssql.VarChar, product_name)
-            .input('product_image_url', mssql.VarChar, product_image_url)
-            .input('product_description', mssql.VarChar, product_description)
-            .input('product_price', mssql.Int, product_price)
-            .input('product_in_stock', mssql.Int, product_in_stock)
-            .input('product_category', mssql.VarChar, product_category)
+            .input('product_name', mssql.VarChar, products.product_name)
+            .input('product_image_url', mssql.VarChar, products.product_image_url)
+            .input('product_description', mssql.VarChar, products.product_description)
+            .input('product_price', mssql.Int, products.product_price)
+            .input('product_in_stock', mssql.Int, products.product_in_stock)
+            .input('product_category', mssql.VarChar, products.product_category)
             .execute('updateProduct')
 
         res.status(200)

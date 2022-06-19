@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-order',
-  templateUrl: './edit-order.component.html',
-  styleUrls: ['./edit-order.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class EditOrderComponent implements OnInit {
+export class EditProductComponent implements OnInit {
 
-  orderDetails!: FormGroup
   constructor() { }
 
+  productDetails!: FormGroup
   ngOnInit(): void {
-    this.orderDetails = new FormGroup({
+    this.productDetails = new FormGroup({
       'productName': new FormControl('', Validators.required),
       'productImageURL': new FormControl('', Validators.required),
       'productDescription': new FormControl('', Validators.required),

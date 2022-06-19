@@ -1,18 +1,18 @@
 <div class="body">
 
     <div class="form-container">
-        <form [formGroup]="orderDetails">
+        <form [formGroup]="productDetails">
             <div class="form-content">
-                <div class="title">Edit Order</div>
+                <div class="title">Edit product</div>
                 <div class="input">
-            
+
                     <div class="input">
                         <div class="input-box">
                             <img src="../../../assets/good.png" alt="">
                             <input type="text" placeholder="Product name">
                         </div>
                         <span class="error"
-                            *ngIf="orderDetails.get('productName')?.errors?.['required'] && orderDetails.get('productName')?.touched">Please
+                            *ngIf="productDetails.get('productName')?.errors?.['required'] && productDetails.get('productName')?.touched">Please
                             enter product name</span>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                             <input type="text" placeholder="Product image URL">
                         </div>
                         <span class="error"
-                            *ngIf="orderDetails.get('productImageURL')?.errors?.['required'] && orderDetails.get('productImageURL')?.touched">Please
+                            *ngIf="productDetails.get('productImageURL')?.errors?.['required'] && productDetails.get('productImageURL')?.touched">Please
                             enter product image URL</span>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <input type="text" placeholder="Product description">
                     </div>
                     <span class="error"
-                        *ngIf="orderDetails.get('productDescription')?.errors?.['required'] && orderDetails.get('productDescription')?.touched">Please
+                        *ngIf="productDetails.get('productDescription')?.errors?.['required'] && productDetails.get('productDescription')?.touched">Please
                         enter product description</span>
                 </div>
 
@@ -44,13 +44,13 @@
                         <input type="number" placeholder="Product price">
                     </div>
                     <span class="error"
-                        *ngIf="orderDetails.get('productPrice')?.errors?.['required'] && orderDetails.get('productPrice')?.touched">Please
+                        *ngIf="productDetails.get('productPrice')?.errors?.['required'] && productDetails.get('productPrice')?.touched">Please
                         enter product price</span>
                     <span class="error"
-                        *ngIf="orderDetails.get('productPrice')?.errors?.['pattern'] && orderDetails.get('productPrice')?.touched">Product
+                        *ngIf="productDetails.get('productPrice')?.errors?.['pattern'] && productDetails.get('productPrice')?.touched">Product
                         price should be digits only</span>
                     <span class="error"
-                        *ngIf="orderDetails.get('productPrice')?.errors?.['minLength'] && orderDetails.get('productPrice')?.touched">Product
+                        *ngIf="productDetails.get('productPrice')?.errors?.['minLength'] && productDetails.get('productPrice')?.touched">Product
                         price should be more than 3 digits (1000)</span>
                 </div>
 
@@ -60,13 +60,13 @@
                         <input type="number" placeholder="Quantity in stock">
                     </div>
                     <span class="error"
-                        *ngIf="orderDetails.get('quantityInStock')?.errors?.['required'] && orderDetails.get('quantityInStock')?.touched">Please
+                        *ngIf="productDetails.get('quantityInStock')?.errors?.['required'] && productDetails.get('quantityInStock')?.touched">Please
                         enter quantity in stock</span>
                     <span class="error"
-                        *ngIf="orderDetails.get('quantityInStock')?.errors?.['pattern'] && orderDetails.get('quantityInStock')?.touched">Quantity
+                        *ngIf="productDetails.get('quantityInStock')?.errors?.['pattern'] && productDetails.get('quantityInStock')?.touched">Quantity
                         in stock should be digits only</span>
                     <span class="error"
-                        *ngIf="orderDetails.get('quantityInStock')?.errors?.['minLength'] && orderDetails.get('quantityInStock')?.touched">Quantity
+                        *ngIf="productDetails.get('quantityInStock')?.errors?.['minLength'] && productDetails.get('quantityInStock')?.touched">Quantity
                         in stock should be more than 1 digit (10)</span>
                 </div>
 
@@ -76,7 +76,7 @@
                         <input type="text" placeholder="Product category">
                     </div>
                     <span class="error"
-                        *ngIf="orderDetails.get('productCategory')?.errors?.['required'] && orderDetails.get('productCategory')?.touched">Please
+                        *ngIf="productDetails.get('productCategory')?.errors?.['required'] && productDetails.get('productCategory')?.touched">Please
                         enter product category</span>
                 </div>
 
