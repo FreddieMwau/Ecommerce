@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from '../model/product';
+import { ShopService } from '../Service/shop.service';
 
 @Component({
   selector: 'app-headphones',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadphonesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shopService:ShopService) { }
+  products:ProductModel[]=[]
+  p:number =1
 
   ngOnInit(): void {
+    this.shopService.getAllHeadphones().subscribe(data => {
+      this.products = data
+    })
   }
 
 }

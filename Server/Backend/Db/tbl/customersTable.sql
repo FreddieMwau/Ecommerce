@@ -10,6 +10,7 @@ CREATE TABLE customers
     isAdmin BIT DEFAULT 0,
     city VARCHAR (50),
     county VARCHAR(50),
+    isActive BIT DEFAULT 1,
     card_name VARCHAR(255),
     card_number INT,
     card_exp_month VARCHAR(50),

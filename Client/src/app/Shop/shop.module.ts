@@ -11,6 +11,7 @@ import { EarbudsComponent } from './earbuds/earbuds.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from '../Shared/footer/footer.component';
 import { NavbarComponent } from '../Shared/navbar/navbar.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -28,12 +29,14 @@ import { NavbarComponent } from '../Shared/navbar/navbar.component';
   imports: [
     CommonModule,
     FormsModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {path:'', children:[
         {path:'', component:ProductsComponent},
         { path: 'headphones', component: HeadphonesComponent },
         { path: 'earbuds', component: EarbudsComponent },
+        { path: 'product/:product_id', component: ProductComponent },
         { path: 'speakers', component: SpeakersComponent },
         { path: 'cart', component: CartComponent },
         { path: 'checkout', component: CheckoutComponent },

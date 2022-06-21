@@ -1,5 +1,8 @@
 .dash-design {
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .img-container {
