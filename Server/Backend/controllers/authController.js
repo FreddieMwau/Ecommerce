@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logIn = exports.getUserByUserName = exports.getAllUsers = exports.signUp = void 0;
+exports.logIn = exports.getUserById = exports.getUserByUserName = exports.getAllUsers = exports.signUp = void 0;
 const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
@@ -89,6 +89,24 @@ const getUserByUserName = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.getUserByUserName = getUserByUserName;
+const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const customer_id = req.params.customer_id;
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const user = yield dbPool.request()
+            .input('customer_id', mssql_1.default.VarChar, customer_id)
+            .execute('getUserById');
+        if (!user.recordset[0]) {
+            return res.json({ message: `User with id::${customer_id} does not exist` });
+        }
+        res.status(200)
+            .json(user.recordset);
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.getUserById = getUserById;
 const logIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let dbPool = yield mssql_1.default.connect(config_1.default);

@@ -3,5 +3,5 @@ AS
 BEGIN
     SELECT *
     FROM products
-    WHERE product_category = @product_category
+    WHERE product_category = @product_category AND isDeleted=0
 END

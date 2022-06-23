@@ -22,6 +22,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "angular-line-awesome": "^13.0.1",
+    "lottie-web": "^5.9.4",
+    "ngx-lottie": "^8.2.0",
     "ngx-pagination": "^6.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

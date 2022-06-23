@@ -1,4 +1,7 @@
 CREATE OR ALTER PROCEDURE getAllProducts
-AS BEGIN
-SELECT * FROM products
+AS
+BEGIN
+    SELECT *
+    FROM products
+    WHERE isDeleted = 0
 END

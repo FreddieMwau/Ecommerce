@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Users } from 'src/app/Auth/model/user';
+import { AuthService } from 'src/app/Auth/Service/auth.service';
+import { CartService } from 'src/app/Shop/Service/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +11,28 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  totalItems:number=0
+  user: Users = {
+    customer_id: '',
+    full_name: '',
+    email: '',
+    isAdmin:false,
+    customer_password: ''
+  }
+  constructor(private router:Router, private cartService:CartService, public authService:AuthService) { }
 
   ngOnInit(): void {
+    this.cartService.getProducts().subscribe(res => {
+      this.totalItems = res.length
+    })
+
+    let email = localStorage.getItem('email')
+    if(email){
+      this.authService.getUser(email).subscribe(data=>{
+        this.user = data[0]
+      })
+    }
+
   }
 
   menu(e: Event, x: HTMLDivElement, y: HTMLDivElement) {

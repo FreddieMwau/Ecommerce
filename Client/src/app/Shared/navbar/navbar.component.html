@@ -38,7 +38,7 @@
             </div>
 
             <li class="mx-4 my-6 md:my-0">
-                <a routerLink="/admin" routerLinkActive="selected"
+                <a routerLink="/admin" *ngIf="authService.isAdmin()" routerLinkActive="selected"
                     class="text-sm text-white hover:text-cyan-500 duration-500">ADMIN</a>
             </li>
     
@@ -48,10 +48,12 @@
     <div #navIcons
         class="md:flex md:items-center z-[-1] md:z-auto md:static w-full bg-black left-0 md:w-auto md:py-0 py-2 md:pl-0 pl-2 md:opacity-100 opacity-0 absolute top-[-400px] transition-all ease-in duration-300">
         <img src="../../assets/shopping-cart.png" (click)="cart()" class="h-7 cursor-pointer inline mx-1" alt="">
+        <p class="text-cyan-400">{{totalItems}}</p>
         <!-- <img src="../../assets/user.png" class="h-6 cursor-pointer inline mx-1" alt=""> -->
         <li class="mx-4 my-6 md:my-0">
-            <a routerLink="/login" routerLinkActive="selected"
+            <a routerLink="/login" *ngIf="!authService.isLoggedIn()" routerLinkActive="selected"
                 class="text-sm text-white hover:text-cyan-500 duration-500">LOG IN</a>
+            <a *ngIf="authService.isLoggedIn()" (click)="authService.logOut()" id="logout" class="text-sm text-white hover:text-cyan-500 duration-500">LOG OUT</a>
         </li>
     </div>
 </nav>

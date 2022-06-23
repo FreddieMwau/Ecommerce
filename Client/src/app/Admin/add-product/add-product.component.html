@@ -4,10 +4,13 @@
         <form [formGroup]="productDetails">
             <div class="form-content">
                 <div class="title">Add product</div>
+                <p class="msg" *ngIf="msg">{{msg}}</p>
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/good.png" alt="">
-                        <input type="text" formControlName="productName" placeholder="Product name">
+                        <input type="text" 
+                        [(ngModel)]="productsDet.product_name" 
+                        formControlName="productName" placeholder="Product name">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('productName')?.errors?.['required'] && productDetails.get('productName')?.touched">Please
@@ -17,7 +20,7 @@
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/link.png" alt="">
-                        <input type="text" formControlName="productImageURL" placeholder="Product image URL">
+                        <input type="text" [(ngModel)]="productsDet.product_image_url" formControlName="productImageURL" placeholder="Product image URL">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('productImageURL')?.errors?.['required'] && productDetails.get('productImageURL')?.touched">Please
@@ -27,7 +30,7 @@
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/info.png" alt="">
-                        <input type="text" formControlName="productDescription" placeholder="Product description">
+                        <input type="text" [(ngModel)]="productsDet.product_description" formControlName="productDescription" placeholder="Product description">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('productDescription')?.errors?.['required'] && productDetails.get('productDescription')?.touched">Please
@@ -37,7 +40,7 @@
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/price.png" alt="">
-                        <input type="number" formControlName="productPrice" placeholder="Product price">
+                        <input type="number" [(ngModel)]="productsDet.product_price"  formControlName="productPrice" placeholder="Product price">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('productPrice')?.errors?.['required'] && productDetails.get('productPrice')?.touched">Please
@@ -52,7 +55,7 @@
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/quantity.png" alt="">
-                        <input type="number" formControlName="quantityInStock" placeholder="Quantity in stock">
+                        <input type="number" [(ngModel)]="productsDet.product_in_stock"  formControlName="quantityInStock" placeholder="Quantity in stock">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('quantityInStock')?.errors?.['required'] && productDetails.get('quantityInStock')?.touched">Please
@@ -66,14 +69,14 @@
                 <div class="input">
                     <div class="input-box">
                         <img src="../../../assets/category.png" alt="">
-                        <input type="text" formControlName="productCategory" placeholder="Product category">
+                        <input type="text" [(ngModel)]="productsDet.product_category" formControlName="productCategory" placeholder="Product category">
                     </div>
                     <span class="error"
                         *ngIf="productDetails.get('productCategory')?.errors?.['required'] && productDetails.get('productCategory')?.touched">Please
                         enter product category</span>
                 </div>
 
-                <button>Submit</button>
+                <button (click)="addProduct()">Submit</button>
             </div>
         </form>
     </div>

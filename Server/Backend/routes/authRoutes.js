@@ -8,6 +8,7 @@ const authController_1 = require("../controllers/authController");
 const authRouter = express_1.default.Router();
 authRouter.post('/signup', authController_1.signUp);
 authRouter.get('/', authController_1.getAllUsers);
-authRouter.get('/:email', authController_1.getUserByUserName);
+authRouter.get('/:customer_id', authController_1.getUserById);
+authRouter.get('/email/:email', authController_1.getUserByUserName);
 authRouter.post('/signin', authController_1.logIn);
 exports.default = authRouter;

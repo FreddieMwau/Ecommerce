@@ -12,8 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from '../Shared/footer/footer.component';
 import { NavbarComponent } from '../Shared/navbar/navbar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LottieModule } from 'ngx-lottie';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptorService } from './Service/jwt-interceptor.service';
 
 
+export function playerFactory() {
+  return import('lottie-web');
+}
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -30,6 +36,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     FormsModule,
     NgxPaginationModule,
+    [LottieModule.forRoot({ player: playerFactory })],
     ReactiveFormsModule,
     RouterModule.forChild([
       {path:'', children:[
@@ -42,6 +49,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
         { path: 'checkout', component: CheckoutComponent },
       ]},
     ])
+  ],
+  providers:[
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true
+    }
   ],
   exports:[
     RouterModule

@@ -10,6 +10,6 @@ orderRouter.post('/neworder', orderController_1.newOrders);
 orderRouter.get('/', orderController_1.getAllOrders);
 orderRouter.get('/:order_id', orderController_1.getOrder);
 orderRouter.get('/user/:customer_id', orderController_1.getOrderByUserId);
-orderRouter.delete('/:order_id', orderController_1.deleteOrder);
+orderRouter.patch('/:order_id', orderController_1.deleteOrder);
 orderRouter.patch('/:order_id', orderController_1.updateOrder);
 exports.default = orderRouter;

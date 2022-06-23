@@ -1,0 +1,39 @@
+<section id="interface">
+    <h3 class="dash-title">All Products</h3>
+    <div class="board">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Image</td>
+                    <td>Price</td>
+                    <td>In Stock</td>
+                    <td>category</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products | paginate:{ itemsPerPage:3, currentPage:p}">
+                    <td class="product">
+                        <h5>{{product.product_name}}</h5>
+                    </td>
+                    <td class="image">
+                        <img src="{{product.product_image_url}}" alt="">
+                    </td>
+                    <td class="price">
+                        <h5>Ksh {{product.product_price}}</h5>
+                    </td>
+                    <td>
+                        <h5>{{product.product_in_stock}}</h5>
+                    </td>
+                    <!-- <td class="status"><p>Delivered</p></td> -->
+                    <td>
+                        <h5>{{product.product_category}}</h5>
+                    </td>
+                    <td class="action"><a routerLink="/admin/editproduct/{{product.product_id}}">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</section>

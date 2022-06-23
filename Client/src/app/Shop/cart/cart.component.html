@@ -1,7 +1,10 @@
 <app-navbar></app-navbar>
-<h4>Cart</h4>
-<section id="cart" class="py-4 px-5 mt-4">
+<h4> My Cart</h4>
+<section id="cart" class="py-4 px-5 mt-4" *ngIf="products.length != 0">
     <table width="100%">
+        <div *ngIf="msg" class="msg">
+            <p class="txt">{{msg}}</p>
+        </div>
         <thead>
             <tr>
                 <td>REMOVE</td>
@@ -13,97 +16,55 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let product of products">
                 <td>
-                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
+                    <img id="cancel" class="w-6" src="../../../assets/delete.png" (click)="removeItem(product)" alt="">
                 </td>
-                <td><img id="product" src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png" alt=""></td>
-                <td>Earbuds Explicit</td>
-                <td>Ksh 1000</td>
-                <td><input type="number" value="1"></td>
-                <td>Ksh 1000</td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
-                </td>
-                <td><img id="product"
-                        src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/bose_tv_speaker/product_silo_images/BTVS_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png"
-                        alt=""></td>
-                <td>Sound Bar</td>
-                <td>Ksh 1000</td>
-                <td><input type="number" value="1"></td>
-                <td>Ksh 1000</td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
-                </td>
-                <td><img id="product"
-                        src="https://www.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/noise_cancelling_headphones_700/product_silo_images/Silo_jpg/noise_cancelling_headphones_700_silver_EC_hero.psd/jcr:content/renditions/cq5dam.web.1000.1000.png"
-                        alt=""></td>
-                <td>Earbuds Explicit</td>
-                <td>Ksh 1000</td>
-                <td><input type="number" value="1"></td>
-                <td>Ksh 1000</td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
-                </td>
-                <td><img id="product"
-                        src="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/ls650_page/product_silo_images/lifestyle_650_black_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png"
-                        alt=""></td>
-                <td>Earbuds Explicit</td>
-                <td>Ksh 1000</td>
-                <td><input type="number" value="1"></td>
-                <td>Ksh 1000</td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img id="cancel" class="w-6" src="../../../assets/delete.png" alt="">
-                </td>
-                <td><img id="product"
-                        src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc45/product_silo_images/QC45_PDP_Ecom-Gallery-B02.png/jcr:content/renditions/cq5dam.web.320.320.png"
-                        alt=""></td>
-                <td>Earbuds Explicit</td>
-                <td>Ksh 1000</td>
-                <td><input type="number" value="1"></td>
-                <td>Ksh 1000</td>
+                <td><img id="product" src="{{product.product_image_url}}" alt=""></td>
+                <td>{{product.product_name}}</td>
+                <td>Ksh {{product.product_price}}</td>
+                <td><input type="number" [(ngModel)]="product.ordered_quantity" value="1" (change)="getSubTotal(product.product_id!, i.value);getGrandTotal()"
+                        #i></td>
+                <td>Ksh {{product.subtotal}}</td>
             </tr>
         </tbody>
     </table>
-</section>
-<section id="cart-add" class="py-4 px-5 mt-4">
-    <div id="coupon">
-        <h3>Apply Coupon</h3>
-        <div>
-            <input type="text" id="couponInput" placeholder="Enter Coupon Code">
-            <button class="normal bg-cyan-500 py-2 px-7 rounded">Apply</button>
-        </div>
-    </div>
 
-    <div id="subtotal">
-        <h3>Cart Totals</h3>
-        <table>
-            <tr>
-                <td>Cart Subtotal</td>
-                <td>Ksh 5000</td>
-            </tr>
-            <tr>
-                <td>Shipping</td>
-                <td>Free</td>
-            </tr>
-            <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>Ksh 5000</strong></td>
-            </tr>
-        </table>
-        <button (click)="checkOut()" class="bg-cyan-500 py-2 px-7 rounded">Proceed to checkout</button>
+    <section id="cart-add" class="py-4 px-5 mt-4">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" id="couponInput" placeholder="Enter Coupon Code">
+                <button class="normal bg-cyan-500 py-2 px-7 rounded">Apply</button>
+            </div>
+        </div>
+
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td>Ksh {{grandTotalPrice}}</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>Ksh {{grandTotalPrice}}</strong></td>
+                </tr>
+            </table>
+            <button (click)="checkOut()" class="bg-cyan-500 py-2 px-7 rounded">Proceed to checkout</button>
+        </div>
+    </section>
+</section>
+
+<section id="empty" *ngIf="products.length === 0">
+    <div class="lottie-container">
+        <h4>Your cart is empty</h4>
+        <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        <button routerLink="/shop" class="bg-cyan-500 py-2 px-7 rounded">Go Shopping</button>
     </div>
 </section>
 <app-footer></app-footer>

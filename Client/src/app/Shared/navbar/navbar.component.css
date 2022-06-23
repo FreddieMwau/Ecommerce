@@ -6,3 +6,7 @@ input[type="text"]:focus~.input-text {
     border-bottom: 3px solid cyan;
     padding-bottom: 7px;
 }
+
+#logout{
+    cursor: pointer;
+}

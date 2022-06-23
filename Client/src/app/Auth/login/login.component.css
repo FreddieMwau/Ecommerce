@@ -90,6 +90,19 @@
     font-weight: 500;
 }
 
+.msg{
+    padding: 3px;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    background-color: green;
+    text-align: center;
+    background: greenyellow;
+    color: white;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
 .log-container form{
     height: 100%;
     width: 100%;

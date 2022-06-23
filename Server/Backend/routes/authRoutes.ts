@@ -1,10 +1,11 @@
 import express from 'express'
-import { getAllUsers, getUserByUserName, logIn, signUp } from '../controllers/authController'
+import { getAllUsers, getUserById, getUserByUserName, logIn, signUp } from '../controllers/authController'
 const authRouter = express.Router()
 
 authRouter.post('/signup', signUp)
 authRouter.get('/', getAllUsers)
-authRouter.get('/:email', getUserByUserName)
+authRouter.get('/:customer_id', getUserById)
+authRouter.get('/email/:email', getUserByUserName)
 authRouter.post('/signin', logIn)
 
 

@@ -36,64 +36,45 @@
             </div>
         </div>
     </div>
-    <div class="board">
+    <div class="board" *ngIf="orders.length != 0 ">
         <table width="100%">
             <thead>
                 <tr>
                     <td>Name</td>
                     <td>Image</td>
                     <td>Price</td>
-                    <td>Status</td>
+                    <td>Quantity</td>
+                    <td>User</td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let order of orders | paginate:{ itemsPerPage:3, currentPage:p}">
                     <td class="product">
-                        <h5>Product name</h5>
+                        <h5>{{order.product_name}}</h5>
                     </td>
                     <td class="image">
-                        <img src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png"
+                        <img src="{{order.product_image_url}}"
                             alt="">
                     </td>
-                    <td class="price"><h5>Ksh 1000</h5></td>
-                    <td class="status"><p>Delivered</p></td>
+                    <td class="price"><h5>Ksh {{order.total_price}}</h5></td>
+                    <td><h5>{{order.quantity_ordered}}</h5></td>
+                    <!-- <td class="status"><p>Delivered</p></td> -->
+                    <td><h5>{{order.full_name}}</h5></td>
                     <td class="action"><a routerLink="/admin/editorder" >Edit</a></td>
-                </tr>
-                <tr>
-                    <td class="product">
-                        <h5>Product name</h5>
-                    </td>
-                    <td class="image">
-                        <img src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png"
-                            alt="">
-                    </td>
-                    <td class="price">
-                        <h5>Ksh 1000</h5>
-                    </td>
-                    <td class="status">
-                        <p>Delivered</p>
-                    </td>
-                    <td class="action"><a routerLink="/admin/editorder">Edit</a></td>
-                </tr>
-                <tr>
-                    <td class="product">
-                        <h5>Product name</h5>
-                    </td>
-                    <td class="image">
-                        <img src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png"
-                            alt="">
-                    </td>
-                    <td class="price">
-                        <h5>Ksh 1000</h5>
-                    </td>
-                    <td class="status ">
-                        <p class="delivery text-slate-900">Delivered</p>
-                    </td>
-                    <td class="action"><a routerLink="/admin/editorder">Edit</a></td>
                 </tr>
             </tbody>
         </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
+
+
+    <section id="empty" *ngIf="orders.length === 0 ">
+        <div class="lottie-container">
+            <h4>No orders made yet</h4>
+            <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        </div>
+    </section>
 </section>
+
 

@@ -1,3 +1,8 @@
 <div class="body">
-    <p>welcome works!</p>
+    <section id="empty">
+        <div class="lottie-container">
+            <h4>No orders made yet</h4>
+            <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        </div>
+    </section>
 </div>

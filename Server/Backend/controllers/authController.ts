@@ -27,7 +27,7 @@ export const signUp = async (req: Request, res: Response, next:NextFunction) => 
             .execute('createUser')
         const token = jwt.sign(customer_id, process.env.SECRET_KEY as string)
         res.status(200)
-            .json({ message: 'New user created successfully', token })
+            .json({ message: 'New user created successfully', token})
     } catch(error:any){
         res.json({error: error.message})
     }
@@ -54,6 +54,23 @@ export const getUserByUserName: RequestHandler<{email:string}> = async (req, res
             .execute('getUserByUserName')
         if(!user.recordset[0]){
             return res.json({message: `User with email:${email} does not exist`})
+        }
+        res.status(200)
+            .json(user.recordset)
+    } catch (error: any) {
+        res.json({ error: error.message })
+    }
+}
+
+export const getUserById: RequestHandler<{ customer_id : string}> = async (req,res) => {
+    try{
+        const customer_id = req.params.customer_id
+        let dbPool = await mssql.connect(sqlConfig)
+        const user = await dbPool.request()
+            .input('customer_id', mssql.VarChar, customer_id)
+            .execute('getUserById')
+        if (!user.recordset[0]) {
+            return res.json({ message: `User with id::${customer_id} does not exist` })
         }
         res.status(200)
             .json(user.recordset)
