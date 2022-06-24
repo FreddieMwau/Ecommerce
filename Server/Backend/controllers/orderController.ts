@@ -134,3 +134,15 @@ export const updateOrder: RequestHandler <{order_id:string}> = async (req, res) 
         res.json({ error: error.message })
     }
 }
+
+export const getOrderCount:RequestHandler = async(req,res)=>{
+    try{
+        let dbPool = await mssql.connect(sqlConfig)
+        const orderCount = await dbPool.request()
+            .execute('getOrderCount')
+        res.status(200)
+            .json( orderCount.recordset[0])
+    } catch (error: any) {
+        res.json({ error: error.message })
+    }
+}

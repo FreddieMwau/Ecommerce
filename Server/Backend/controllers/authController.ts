@@ -109,3 +109,15 @@ export const logIn: RequestHandler = async (req, res) => {
         res.json({ error: error.message })
     }
 }
+
+export const getUserCount:RequestHandler = async (req,res) => {
+    try{
+        let dbPool = await mssql.connect(sqlConfig)
+        const userCount = await dbPool.request()
+            .execute('getuserCount')
+        res.status(200)
+            .json(userCount.recordset[0])
+    } catch (error: any) {
+        res.json({ error: error.message })
+    }
+}

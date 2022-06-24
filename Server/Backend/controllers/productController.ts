@@ -138,3 +138,15 @@ export const updateProduct: RequestHandler<{ product_id: string }> = async (req,
         res.json({ error: error.message })
     }
 }
+
+export const getProductCount: RequestHandler = async (req, res) => {
+    try{
+        let dbPool = await mssql.connect(sqlConfig)
+        const productCount = await dbPool.request()
+            .execute('getProductCount')
+        res.status(200)
+            .json(productCount.recordset[0])
+    } catch (error: any) {
+        res.json({ error: error.message })
+    }
+}

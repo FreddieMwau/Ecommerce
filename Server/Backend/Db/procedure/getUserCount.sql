@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE getuserCount
+AS BEGIN
+SELECT COUNT(*)
+FROM customers
+END

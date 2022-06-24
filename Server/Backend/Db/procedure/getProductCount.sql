@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE getProductCount
+AS BEGIN
+SELECT COUNT(*)
+FROM products
+END

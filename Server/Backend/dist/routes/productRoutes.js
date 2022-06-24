@@ -8,6 +8,7 @@ const productController_1 = require("../controllers/productController");
 const productRouter = express_1.default.Router();
 productRouter.post('/newproduct', productController_1.newProduct);
 productRouter.get('/', productController_1.getAllProducts);
+productRouter.get('/products', productController_1.getProductCount);
 productRouter.get('/category/:product_category', productController_1.getCategoryProducts);
 productRouter.get('/:product_id', productController_1.getProduct);
 productRouter.patch('/:product_id', productController_1.deleteProduct);

@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateProduct = exports.deleteProduct = exports.getProduct = exports.getCategoryProducts = exports.getAllProducts = exports.newProduct = void 0;
+exports.getProductCount = exports.updateProduct = exports.deleteProduct = exports.getProduct = exports.getCategoryProducts = exports.getAllProducts = exports.newProduct = void 0;
 const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
@@ -160,3 +160,16 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.updateProduct = updateProduct;
+const getProductCount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const productCount = yield dbPool.request()
+            .execute('getProductCount');
+        res.status(200)
+            .json(productCount.recordset[0]);
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.getProductCount = getProductCount;

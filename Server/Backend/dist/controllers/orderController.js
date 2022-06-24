@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrder = exports.deleteOrder = exports.getOrderByUserId = exports.getOrder = exports.getAllOrders = exports.newOrders = void 0;
+exports.getOrderCount = exports.updateOrder = exports.deleteOrder = exports.getOrderByUserId = exports.getOrder = exports.getAllOrders = exports.newOrders = void 0;
 const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
@@ -143,3 +143,16 @@ const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.updateOrder = updateOrder;
+const getOrderCount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let dbPool = yield mssql_1.default.connect(config_1.default);
+        const orderCount = yield dbPool.request()
+            .execute('getOrderCount');
+        res.status(200)
+            .json(orderCount.recordset[0]);
+    }
+    catch (error) {
+        res.json({ error: error.message });
+    }
+});
+exports.getOrderCount = getOrderCount;
