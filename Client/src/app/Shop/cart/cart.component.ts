@@ -89,7 +89,7 @@ export class CartComponent implements OnInit {
           setTimeout(() => {
             this.msg=''
             this.cartService.removeAllCartItems()
-            this.router.navigate(['/shop/checkout'])
+            this.router.navigate(['/shop'])
           }, 3000);
         } else{
           this.msg = res.message

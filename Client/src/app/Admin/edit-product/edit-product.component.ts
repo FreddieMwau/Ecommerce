@@ -37,7 +37,7 @@ export class EditProductComponent implements OnInit {
        this.product_id = params['productid']      
       this.productService.getProduct(this.product_id).subscribe((data) => {
         this.product = data[0]
-      })
+      })  
     })
   }
 

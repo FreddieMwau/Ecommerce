@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products | paginate:{ itemsPerPage:3, currentPage:p}">
+                <tr *ngFor="let product of products | paginate:{ itemsPerPage:3, currentPage:p}" #i>
                     <td class="product">
                         <h5>{{product.product_name}}</h5>
                     </td>
@@ -26,11 +26,15 @@
                     <td>
                         <h5>{{product.product_in_stock}}</h5>
                     </td>
-                    <!-- <td class="status"><p>Delivered</p></td> -->
                     <td>
                         <h5>{{product.product_category}}</h5>
                     </td>
-                    <td class="action"><a routerLink="/admin/editproduct/{{product.product_id}}">Edit</a></td>
+                    <td class="action">
+                        <div class="actions">
+                            <a id="edit" routerLink="/admin/editproduct/{{product.product_id}}">Edit</a>
+                            <a class="delete" (click)="deleteProduct(product.product_id)">Delete</a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

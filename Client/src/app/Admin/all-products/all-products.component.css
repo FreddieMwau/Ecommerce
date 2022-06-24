@@ -42,13 +42,7 @@
 #interface .board a {
     text-decoration: none;
     font-size: 14px;
-    color: #ccc;
-}
-
-#interface .board a:hover {
-    text-decoration: underline;
     cursor: pointer;
-    color: #5C8AF0;
 }
 
 table {
@@ -78,6 +72,18 @@ table tbody tr td.status {
     margin-top: 25px;
     display: inline-block;
     border-radius: 40px;
+}
+
+.actions{
+    display: flex;
+    flex-direction: column;
+}
+a.delete{
+    color: orangered;
+}
+
+a#edit{
+    color: green;
 }
 
 @media (max-width:769px) {

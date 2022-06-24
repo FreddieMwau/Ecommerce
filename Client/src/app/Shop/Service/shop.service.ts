@@ -31,4 +31,8 @@ export class ShopService {
   getAllHeadphones() {
     return this.Http.get<ProductModel[]>(`http://localhost:7000/products/category/${this.headphones}`)
   }
+
+  getProductCount(){
+    return this.Http.get<any>("http://localhost:7000/products/products")
+  }
 }

@@ -15,7 +15,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   options: AnimationOptions = {
-    path: '/assets/orders.json'
+    path: '/assets/control.json'
   }
 
   animationCreated(animationItem: AnimationItem): void {

@@ -23,6 +23,10 @@ export class AuthService {
     return this.Http.get<Users[]>(`http://localhost:7000/user/email/${email}`)
   }
 
+  getUserCount(){
+    return this.Http.get<any>("http://localhost:7000/user/users")
+  }
+
   users$ = this.Http.get<Users[]>('http://localhost:7000/user/').pipe(
     tap(users=>console.log(users)
     )

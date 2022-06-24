@@ -34,4 +34,8 @@ export class ProductService {
   getProduct(product_id:string){
     return this.Http.get<ProductModel[]>(`http://localhost:7000/products/${product_id}`)
   }
+
+  deleteProduct(product_id: string, product?: ProductModel) {
+    return this.Http.patch<any>(`http://localhost:7000/products/${product_id}`, product)
+  }
 }

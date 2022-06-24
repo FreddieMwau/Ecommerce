@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from 'src/app/Auth/model/user';
+import { AuthService } from 'src/app/Auth/Service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-
+  user:Users={
+    email: '',
+    full_name:'',
+    customer_password: ''
+  }
+  constructor(private authService:AuthService) { }
+  adminName!:string
   ngOnInit(): void {
+    const email = localStorage.getItem('email')
+    if(email){
+      this.authService.getUser(email).subscribe(data => {
+        this.user=data[0]
+      })
+    }
   }
 
   toggle(){

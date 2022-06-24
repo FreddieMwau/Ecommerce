@@ -51,8 +51,10 @@ export class LoginComponent implements OnInit {
 
         this.authService.getUser(this.signUpCredentials.email).subscribe(res=>{
           this.user = res[0]
-          console.log(this.user);
-          
+          if (this.user.isAdmin == true) {
+            this.admin = 'Yes'
+            localStorage.setItem('isAdmin', this.admin)
+          }   
         })
         if (res.message == "New user created successfully"){
           setTimeout(()=> {
@@ -75,7 +77,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token)
         this.authService.getUser(this.signInCredentials.email).subscribe(res => {
           this.user = res[0]
-          console.log(this.user);
           if(this.user.isAdmin == true){
             this.admin = 'Yes'
             localStorage.setItem('isAdmin', this.admin)

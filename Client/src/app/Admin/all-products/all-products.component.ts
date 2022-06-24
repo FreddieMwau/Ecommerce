@@ -20,4 +20,11 @@ export class AllProductsComponent implements OnInit {
     })
   }
 
+  deleteProduct(product_id?:string){
+    console.log(product_id);
+    if (product_id){
+      this.productService.deleteProduct(product_id).subscribe();      
+    }
+  }
+
 }

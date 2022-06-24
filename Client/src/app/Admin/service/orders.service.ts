@@ -28,11 +28,19 @@ export class OrdersService {
     return this.Http.get<Cart>(`http://localhost:7000/orders/${order_id}`)
   }
 
+  getOrdersCount(){
+    return this.Http.get<any>("http://localhost:7000/orders/orders")
+  }
+
   addOrder(order: Orders){
     return this.Http.post<any>("http://localhost:7000/orders/neworder", order)
   }
 
   updateOrder(order_id: string, order: Cart){
     return this.Http.patch<any>(`http://localhost:7000/orders/${order_id}`,order)
+  }
+
+  deleteOrder(order_id:string){
+    return this.Http.delete<any>(`http://localhost:7000/orders/order/${order_id}`)
   }
 }

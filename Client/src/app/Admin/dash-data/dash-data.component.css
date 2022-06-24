@@ -119,6 +119,14 @@ ng-lottie {
     justify-content: space-evenly;
 }
 
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions a.delete {
+    color: orangered;
+}
 #interface .cards .card {
     background-color: white;
     width: 235px;
@@ -195,14 +203,14 @@ ng-lottie {
 #interface .board a {
     text-decoration: none;
     font-size: 14px;
-    color: #ccc;
+    cursor: pointer;
 }
 
-#interface .board a:hover {
+/* #interface .board a:hover {
     text-decoration: underline;
     cursor: pointer;
     color: #5C8AF0;
-}
+} */
 
 table {
     border-collapse: collapse;

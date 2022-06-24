@@ -30,13 +30,13 @@
                 <div class="menu-icon">
                     <img id="menu-icon" (click)="toggle()" src="../../../assets/ham.png" alt="">
                 </div>
-                <div class="search">
+                <!-- <div class="search">
                     <input type="text" placeholder="Search...">
-                </div>
+                </div> -->
             </div>
             <div class="profile">
                 <img src="../../../assets/malik.png" alt="">
-                <h4>Welcome Admin</h4>
+                <h4>Welcome {{user.full_name}}</h4>
             </div>
         </div>
         <router-outlet></router-outlet>

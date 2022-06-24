@@ -7,6 +7,7 @@
     border: 1px solid dimgrey;
     border-radius: 10px;
     display: flex;
+    height: 35rem;
     margin: 20px 80px;
     flex-direction: column;
     padding: 5px;
@@ -14,6 +15,7 @@
 
 .lottie-container {
     width: 100vh;
+    height: 29rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,15 +26,13 @@
 .lottie-container h4 {
     font-size: 17px;
     font-weight: 600;
-}
+    margin-top: 5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
 
-.lottie-container button {
-    color: white;
-    cursor: pointer;
-    margin-bottom: 20px;
 }
 
 ng-lottie {
-    width: 250px;
-    height: 200px;
+    width: 650px;
+    height: 550px;
 }
