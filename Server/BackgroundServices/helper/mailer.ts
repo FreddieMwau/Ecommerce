@@ -8,10 +8,11 @@ function createTransport(config:any){
 }
 
 const configuration = {
+    host: 'smtp-mail.outlook.com',
     port: 587,
-    host: 'smtp.gmail.com',
-    secure: false,
-    requireTLS: true,
+    tls:{
+        rejectUnauthorized:false
+    },
     auth: {
         user: process.env.EMAIL as string,
         pass: process.env.EMAIL_PASS as string

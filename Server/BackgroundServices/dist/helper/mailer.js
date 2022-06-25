@@ -20,10 +20,11 @@ function createTransport(config) {
     return transport;
 }
 const configuration = {
+    host: 'smtp-mail.outlook.com',
     port: 587,
-    host: 'smtp.gmail.com',
-    secure: false,
-    requireTLS: true,
+    tls: {
+        rejectUnauthorized: false
+    },
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASS

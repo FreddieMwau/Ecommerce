@@ -23,9 +23,10 @@ const dbConnect = async () => {
 const mail = async () => {
     cron.schedule('*/5 * * * * *', async () => {
         await emailService()
+        console.log("Mail sent");
         console.log('Running after every 5 secs');
     })
 }
 
-// mail()
+mail()
 dbConnect()

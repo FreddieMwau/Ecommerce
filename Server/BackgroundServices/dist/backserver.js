@@ -35,8 +35,9 @@ const dbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
 const mail = () => __awaiter(void 0, void 0, void 0, function* () {
     node_cron_1.default.schedule('*/5 * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
         yield (0, mail_1.default)();
+        console.log("Mail sent");
         console.log('Running after every 5 secs');
     }));
 });
-// mail()
+mail();
 dbConnect();
